@@ -1,0 +1,11 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+p{
+    line-height: 10px;
+    font: outline;
+    color: red;
+    background-color: aquamarine;
+
+}
