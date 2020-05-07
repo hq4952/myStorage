@@ -1,0 +1,70 @@
+body {
+  background-color: #dddddd;
+}
+.outer .goodsShow {
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+  width: 990px;
+  height: 260px;
+  margin: 200px auto;
+}
+.outer .goodsShow .goodsList {
+  position: absolute;
+  left: 0;
+  zoom: 1;
+  width: 3000px;
+  padding: 0 20px;
+}
+.outer .goodsShow .goodsList::after {
+  content: '\200B';
+  height: 0;
+  clear: both;
+  display: block;
+}
+.outer .goodsShow .goodsList a {
+  float: left;
+  text-align: center;
+}
+.outer .goodsShow .goodsList a:nth-child(odd) {
+  margin: 50px 50px 0 0 ;
+}
+.outer .goodsShow .goodsList a:nth-child(odd) p {
+  margin-bottom: 10px;
+}
+.outer .goodsShow .goodsList a:nth-child(even) {
+  margin: 20px 50px 0 0 ;
+}
+.outer .goodsShow .goodsList a:nth-child(even) p {
+  margin-top: 10px;
+}
+.outer .goodsShow .goodsList a:hover {
+  color: red;
+}
+.outer .goodsShow .goodsList a:hover p {
+  color: red;
+}
+.outer .goodsShow .goodsList a img {
+  width: 150px;
+  height: 150px;
+}
+.outer .goodsShow .goodsList a p {
+  font-size: 14px;
+  color: #333333;
+}
+.outer .goodsShow .scroll {
+  width: 100%;
+  height: 2px;
+  background-color: #dddddd;
+  position: absolute;
+  bottom: 5px;
+  display: none;
+}
+.outer .goodsShow .scroll .block {
+  height: 10px;
+  width: 40px;
+  background-color: #cccccc;
+  position: absolute;
+  top: -5px;
+  border-radius: 5px;
+}

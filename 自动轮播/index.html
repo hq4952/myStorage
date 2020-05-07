@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自动轮播</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        $(function(){
+            var timer = null;
+            var disX = -5;
+            auto();
+            function auto(){
+                timer = setInterval(function(){
+                var eleX = $('.goodsList')[0].offsetLeft;
+                var finX = eleX + disX;
+                if(eleX ===-2000){
+                    $('.goodsList').css('left',0)
+                    return
+                }
+                $('.goodsList').css({
+                    left:finX+'px'
+                    })
+                    $('.block').css({
+                    left:-finX*scale
+                })  
+                },60)
+            }
+            $('.goodsShow').on('mouseenter',function(){
+                clearInterval(timer)
+                $('.scroll').css('display','block')
+            }).on('mouseleave',function(){
+                auto();
+                $('.scroll').css('display','none')
+            })
+            var scale = $('.goodsShow').width()/$('.goodsList').innerWidth();
+            $('.scroll .block').width(($('.goodsShow').width())*scale);
+            $('.scroll .block').on('mousedown',function(e){
+                e.preventDefault()
+                var starX = e.offsetX;
+                var disX = $('.scroll').offset().left;
+                function fn(e){
+                    e.preventDefault()
+                    var finX = e.clientX - starX - disX;
+                    if(finX<0){
+                        finX = 0
+                    }else if(finX>$('.scroll').width()-$('.block').width()){
+                        finX = $('.scroll').width()-$('.block').width()
+                        
+                    }
+                    $('.scroll .block').css({
+                        left: finX + 'px'
+                    })
+                    $('.goodsList').css({
+                        left:-finX/scale
+                    })
+                }
+                $(document).on('mousemove',fn
+                   
+                ).on('mouseup',function(e){
+                    e.preventDefault()
+                    var finX = e.clientX - starX - disX;
+                    if(finX >= $('.scroll').width()-$('.block').width()){
+                        $('.block').css('left',0);
+                        $('.goodsList').css('left',0);
+                    }
+                    $(this).off('mousemove',fn)
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="outer">
+        <div class="goodsShow">
+            <div class="goodsList">
+                <a href="#">
+                    <p>金士顿512G U盘</p>
+                    <div class="imgwrapper">
+                        <img src="./img/usb.webp" alt="">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="imgwrapper">
+                        <img src="./img/lip.webp" alt="">
+                    </div>
+                    <p>MAC 限量款口红</p>
+                </a>
+                <a href="#">
+                    <p>闪迪 大容量内存卡</p>
+                    <div class="imgwrapper">
+                        <img src="./img/card.webp" alt="">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="imgwrapper">
+                        <img src="./img/wangyuanjing.webp" alt="">
+                    </div>
+                    <p>德国进口望远镜</p>
+                </a>
+                <a href="#">
+                    <p>黑街多功能变形轮滑鞋</p>
+                    <div class="imgwrapper">
+                        <img src="./img/shoes.webp" alt="">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="imgwrapper">
+                        <img src="./img/huaban.webp" alt="">
+                    </div>
+                    <p>AD 双翘枫木滑板</p>
+                </a>
+                <a href="#">
+                    <p>Spike 铝合金瞄准镜</p>
+                    <div class="imgwrapper">
+                        <img src="./img/aim.webp" alt="">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="imgwrapper">
+                        <img src="./img/oven.webp" alt="">
+                    </div>
+                    <p>九阳 温控大烤箱</p>
+                </a>
+                <a href="#">
+                    <p>振德 一次性医用口罩</p>
+                    <div class="imgwrapper">
+                        <img src="./img/mask.webp" alt="">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="imgwrapper">
+                        <img src="./img/bull.webp" alt="">
+                    </div>
+                    <p>公牛 智能 插座</p>
+                </a>
+                <a href="#">
+                    <p>金士顿512G U盘</p>
+                    <div class="imgwrapper">
+                        <img src="./img/usb.webp" alt="">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="imgwrapper">
+                        <img src="./img/lip.webp" alt="">
+                    </div>
+                    <p>MAC 限量款口红</p>
+                </a>
+                <a href="#">
+                    <p>闪迪 大容量内存卡</p>
+                    <div class="imgwrapper">
+                        <img src="./img/card.webp" alt="">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="imgwrapper">
+                        <img src="./img/wangyuanjing.webp" alt="">
+                    </div>
+                    <p>德国进口望远镜</p>
+                </a>
+                <a href="#">
+                    <p>黑街多功能变形轮滑鞋</p>
+                    <div class="imgwrapper">
+                        <img src="./img/shoes.webp" alt="">
+                    </div>
+                </a>
+            </div>
+            <div class="scroll">
+                <div class="block">
+
+                </div>
+            </div>
+        </div>
+        <progress max="100" value="50"></progress>
+        <input type="text" list="city">
+        <select id="city">
+            <option >北京</option>
+            <option >上海</option>
+            <option>广州</option>
+            <option>深圳</option>
+        </select>
+    </div>
+</body>
+</html>
